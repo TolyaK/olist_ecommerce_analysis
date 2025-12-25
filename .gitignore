@@ -1,0 +1,6 @@
+data/
+*.csv
+
+assets/logo.png
+assets/olist_logo.png
+assets/dashboard_bg.svg
