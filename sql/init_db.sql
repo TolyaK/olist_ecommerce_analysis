@@ -1,79 +1,79 @@
 -- 1. Таблица заказов
-create table orders (
-	order_id varchar(50) primary key,
-	customer_id varchar(50),
-	order_status varchar(50),
-	order_purchase_timestamp timestamp,
-	order_approved_at timestamp,
-	order_delivered_carrier_date timestamp,
-	order_delivered_customer_date timestamp,
-	order_estimated_delivery_date timestamp
+CREATE TABLE orders (
+	order_id VARCHAR(50) PRIMARY KEY,
+	customer_id VARCHAR(50),
+	order_status VARCHAR(50),
+	order_purchase_timestamp TIMESTAMP,
+	order_approved_at TIMESTAMP,
+	order_delivered_carrier_date TIMESTAMP,
+	order_delivered_customer_date TIMESTAMP,
+	order_estimated_delivery_date TIMESTAMP
 );
 -- 2. Таблица клиентов
-create table customers (
-	customer_id varchar(50) primary key,
-	customer_unique_id varchar(50),
-	customer_zip_code_prefix varchar(10),
-	customer_city varchar(100),
-	customer_state varchar(5)
+CREATE TABLE customers (
+	customer_id VARCHAR(50) PRIMARY KEY,
+	customer_unique_id VARCHAR(50),
+	customer_zip_code_prefix VARCHAR(10),
+	customer_city VARCHAR(100),
+	customer_state VARCHAR(5)
 );
 -- 3. Таблица деталей заказов
-create table order_items (
-	order_id varchar(50),
-	order_item_id int,
-	product_id varchar(50),
-	seller_id varchar(50),
-	shipping_limit_date timestamp,
-	price decimal(10, 2),
+CREATE TABLE order_items (
+	order_id VARCHAR(50),
+	order_item_id INT,
+	product_id VARCHAR(50),
+	seller_id VARCHAR(50),
+	shipping_limit_date TIMESTAMP,
+	price DECIMAL(10, 2),
 	freight_value decimal(10, 2)
 );
 -- 4. Таблица платежей 
-create table order_payments (
-	order_id varchar(50),
-	payment_sequential int,
-	payment_type varchar(50),
-	payment_installments int,
-	payment_value decimal(10, 2)
+CREATE TABLE order_payments (
+	order_id VARCHAR(50),
+	payment_sequential INT,
+	payment_type VARCHAR(50),
+	payment_installments INT,
+	payment_value DECIMAL(10, 2)
 );
 -- 5. Таблица отзывов
-create table order_reviews (
-	review_id varchar(50),
-	order_id varchar(50),
-	review_score int,
-	review_comment_title text,
-	review_comment_message text,
-	review_creation_date timestamp,
-	review_answer_timestamp timestamp
+CREATE TABLE order_reviews (
+	review_id VARCHAR(50),
+	order_id VARCHAR(50),
+	review_score INT,
+	review_comment_title TEXT,
+	review_comment_message TEXT,
+	review_creation_date TIMESTAMP,
+	review_answer_timestamp TIMESTAMP
 );
 -- 6. Таблица товаров
-create table products (
-	product_id varchar(50) primary key,
-	product_category_name varchar(100),
-	product_name_lenght int,
-	product_description_lenght int,
-	product_photos_qty int,
-	product_weight_g int,
-	product_length_cm int,
-	product_height_cm int,
-	product_width_cm int
+CREATE TABLE products (
+	product_id VARCHAR(50) PRIMARY KEY,
+	product_category_name VARCHAR(100),
+	product_name_lenght INT,
+	product_description_lenght INT,
+	product_photos_qty INT,
+	product_weight_g INT,
+	product_length_cm INT,
+	product_height_cm INT,
+	product_width_cm INT
 );
 -- 7. Таблица продавцов 
-create table sellers (
-	seller_id varchar(50) primary key,
-	seller_zip_code_prefix varchar(10),
-	seller_city varchar(100),
-	seller_state varchar(5)
+CREATE TABLE sellers (
+	seller_id VARCHAR(50) PRIMARY KEY,
+	seller_zip_code_prefix VARCHAR(10),
+	seller_city VARCHAR(100),
+	seller_state VARCHAR(5)
 );
---8. Таблица геопозиции
-create table geolocation (
-	geolocation_zip_code_prefix varchar(10),
-	geolocation_lat decimal(18, 15),
-	geolocation_lng decimal(18, 15),
-	geolocation_city varchar(100),
-	geolocation_state varchar(5)
+-- 8. Таблица геопозиции
+CREATE TABLE geolocation (
+	geolocation_zip_code_prefix VARCHAR(10),
+	geolocation_lat DECIMAL(18, 15),
+	geolocation_lng DECIMAL(18, 15),
+	geolocation_city VARCHAR(100),
+	geolocation_state VARCHAR(5)
 );
 -- 9. Таблица перевода категорий
-create table category_translation (
-	product_category_name varchar(100),
-	product_category_name_english varchar(100)
+CREATE TABLE category_translation (
+	product_category_name VARCHAR(100),
+	product_category_name_english VARCHAR(100)
 );

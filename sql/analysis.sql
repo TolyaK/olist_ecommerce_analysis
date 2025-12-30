@@ -12,7 +12,7 @@ SELECT
 	DATE_TRUNC('month', o.order_purchase_timestamp)::date as month, 
 	ROUND(SUM(oi.price), 2) as total_revenue
 FROM orders o
-inner JOIN order_items oi ON o.order_id = oi.order_id 
+INNER JOIN order_items oi ON o.order_id = oi.order_id 
 WHERE o.order_status='delivered'
 GROUP BY 1
 ORDER BY 1;
@@ -102,7 +102,6 @@ LIMIT 5;
 -- 7. ШТАТЫ С ВЫСОКИМ РЕЙТИНГОМ
 -- Бизнес-вопрос: В каких штатах клиенты наиболее довольны?
 -- (Включен фильтр: минимум 30 заказов, чтобы исключить статистический шум)
--- Наивысшие ценки по штатам
 SELECT
 	c.customer_state as state,
 	ROUND(AVG(r.review_score), 2) as average_score
@@ -117,7 +116,6 @@ LIMIT 5;
 -- 8. ШТАТЫ С НИЗКИМ РЕЙТИНГОМ
 -- Бизнес-вопрос: В каких штатах клиенты наименее довольны?
 -- (Включен фильтр: минимум 50 заказов, чтобы исключить статистический шум)
--- Наивысшие ценки по штатам
 SELECT
 	c.customer_state as state,
 	ROUND(AVG(r.review_score), 2) as average_score
@@ -130,7 +128,7 @@ ORDER BY 2
 LIMIT 5;
 
 -- 9. ЭФФЕКТИВНОСТЬ ДОСТАВКИ
--- Бизнес-вопрос: Какая доля заказов доставляется вовремя vs с опозданием?
+-- Бизнес-вопрос: Какая доля заказов доставляется вовремя и с опозданием?
 SELECT
     CASE 
         WHEN order_delivered_customer_date <= order_estimated_delivery_date THEN 'On Time'
